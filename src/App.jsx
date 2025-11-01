@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("/data.json");
+      const response = await axios.get("./data.json");
       setRoutineData(response.data);
     }
 
