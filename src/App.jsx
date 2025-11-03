@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { HiDotsHorizontal } from "react-icons/hi";
+import { Card } from "./Card";
 
 function App() {
   const [routineData, setRoutineData] = useState([]);
@@ -16,6 +17,7 @@ function App() {
   }, []);
 
   const routineDataComponents = routineData.map((routine) => {
+
     const colorPicker = (activity) => {
       activity = routine.title;
       if (activity === "Work") {
@@ -48,53 +50,8 @@ function App() {
             <HiDotsHorizontal className="text-3xl text-neutralNavy-200 hover:text-white" />
           </div>
 
-          <div
-            className={`bg-neutralNavy-900 p-7 pt-2 flex justify-between items-center rounded-b-2xl transition-colors 
-        duration-300 ease-in-out group-hover:bg-neutralNavy-500
-        md:flex-col md:items-start
-          ${period === "Daily" ? "block" : "hidden"}`}
-          >
-            <div className="text-4xl font-light
-            md:mt-6 md:text-5xl">
-              {routine.timeframes.daily.current}hrs
-            </div>
-            <div className="text-lg text-neutralNavy-200
-            md:mt-3">
-              Yesterday - {routine.timeframes.daily.previous}hrs
-            </div>
-          </div>
+        <Card period={period} routine={routine}/>
 
-          <div
-            className={`bg-neutralNavy-900 p-7 pt-2 flex justify-between items-center rounded-b-2xl transition-colors 
-        duration-300 ease-in-out group-hover:bg-neutralNavy-500
-        md:flex-col md:items-start
-          ${period} ${period === "Weekly" ? "block" : "hidden"}`}
-          >
-            <div className="text-4xl font-light
-            md:mt-6 md:text-5xl">
-              {routine.timeframes.weekly.current}hrs
-            </div>
-            <div className="text-lg text-neutralNavy-200
-            md:mt-3">
-              Last Week - {routine.timeframes.weekly.previous}hrs
-            </div>
-          </div>
-
-          <div
-            className={`bg-neutralNavy-900 p-7 pt-2 flex justify-between items-center rounded-b-2xl 
-              transition-colors duration-300 ease-in-out group-hover:bg-neutralNavy-500
-              md:flex-col md:items-start
-          ${period === "Monthly" ? "block" : "hidden"}`}
-          >
-            <div className="text-4xl font-light
-            md:mt-6 md:text-5xl">
-              {routine.timeframes.monthly.current}hrs
-            </div>
-            <div className="text-lg text-neutralNavy-200
-            md:mt-3">
-              Last Month - {routine.timeframes.monthly.previous}hrs
-            </div>
-          </div>
         </div>
       </div>
     );
