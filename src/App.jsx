@@ -40,7 +40,10 @@ function App() {
         className={`rounded-t-2xl rounded-b-3xl mb-7 ${colorPicker()}
         md:flex md:flex-col md:justify-end md:mb-0`}
       >
-        <div className="h-12 md:h-0"></div>
+        {/**fix in progress */}
+        <div className="h-12 relative md:h-0">
+          <img src="./images/icon-work.svg" alt="" className="absolute right-8 -top-2 z-0"/>
+        </div>
         <div className="group hover:cursor-pointer">
           <div
             className="bg-neutralNavy-900 p-7 pb-0 text-xl rounded-t-2xl flex justify-between items-center 
